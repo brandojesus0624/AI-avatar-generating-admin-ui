@@ -1,0 +1,14 @@
+<div>
+  <div style="display: inline-block" *ngFor="let image of images">
+    <div>
+      <img
+        style="display: inline-block; margin-right: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em"
+        nz-image
+        width="256px"
+        height="256px"
+        [nzSrc]="image.url.url"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
