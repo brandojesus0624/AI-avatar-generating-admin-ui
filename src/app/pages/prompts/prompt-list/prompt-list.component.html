@@ -8,11 +8,19 @@
         <p>Tags:
           <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
         </p>
-        <p>Params: CFG Scale={{prompt.cfgScale}};
-          Denoising Strength: {{prompt.denoisingStrength}};
-          Number of inference steps= {{prompt.numberOfInferenceSteps}};
-          Seed={{prompt.seed}};
+        <p>
+          <span style="font-weight: bold"> {{prompt.active? "ACTIVE" : "INACTIVE"}} </span>
+          Number of images: {{prompt.numberOfImages}};
+          Number of inference steps: {{prompt.numberOfInferenceSteps}};
+          Seed:{{prompt.seed}};
+          Params: CFG Scale: {{prompt.cfgScale}};
+          <span *ngIf="prompt.denoisingStrength">
+            Denoising Strength: {{prompt.denoisingStrength}};
+          </span>
         </p>
+        <button style="margin-right: 1em" type="button" routerLink="/prompts/update/{{prompt.id}}" nz-button nzType="primary">
+          Update <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
         <button type="button" (click)="delete(prompt.id)" nz-button nzDanger  nzType="primary">
           Delete <span nz-icon nzType="delete"></span>
         </button>
